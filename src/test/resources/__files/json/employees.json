@@ -1,0 +1,22 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "first_name": "Olivia",
+      "last_name": "Romero",
+      "email": "Olivia@codingthesmartway.com"
+    },
+    {
+      "id": 2,
+      "first_name": "Ray",
+      "last_name": "Bradbury",
+      "email": "Ray@sciencefictionleague.edu"
+    },
+    {
+      "id": 3,
+      "first_name": "Alice",
+      "last_name": "Wilson",
+      "email": "Alice@somecompany.com"
+    }
+  ]
+}
