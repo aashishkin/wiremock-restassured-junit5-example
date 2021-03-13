@@ -2,13 +2,13 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import io.restassured.http.Header;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
-import org.junit.Assert;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static io.restassured.RestAssured.given;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class WireMockRestAssuredJUnit5ExampleTest {
 
@@ -61,7 +61,7 @@ public class WireMockRestAssuredJUnit5ExampleTest {
     public void checkEmployeeFirstNameTest() {
         Response response = given().when().get("http://localhost:8451/organization/employees");
         String firstName = response.jsonPath().get("employees.find { it.id == 2 }.first_name");
-        Assert.assertEquals("Ray", firstName);
+        assertEquals("Ray", firstName);
     }
 
     @Test
@@ -79,8 +79,8 @@ public class WireMockRestAssuredJUnit5ExampleTest {
                 .header(new Header("Accept", "application/json"))
                 .when()
                 .get("http://localhost:8451/another/endpoint");
-        Assert.assertEquals(HttpStatus.SC_OK, response.statusCode());
-        Assert.assertEquals("OK", response.jsonPath().getString("status"));
+        assertEquals(HttpStatus.SC_OK, response.statusCode());
+        assertEquals("OK", response.jsonPath().getString("status"));
     }
 
     @Test
@@ -89,8 +89,8 @@ public class WireMockRestAssuredJUnit5ExampleTest {
                 .header(new Header("Accept", "text/plain"))
                 .when()
                 .get("http://localhost:8451/another/endpoint");
-        Assert.assertEquals(HttpStatus.SC_NOT_ACCEPTABLE, response.statusCode());
-        Assert.assertEquals("406 Not Acceptable", response.getBody().asString());
+        assertEquals(HttpStatus.SC_NOT_ACCEPTABLE, response.statusCode());
+        assertEquals("406 Not Acceptable", response.getBody().asString());
     }
 
 }
